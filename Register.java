@@ -1,12 +1,6 @@
 package mobileOperator;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Register {
@@ -39,8 +33,7 @@ public class Register {
      Calendar calendar = Calendar.getInstance();
 	 java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 	 String query = " insert into users (name,email,date_created,password)"+ " values (?, ?, ?,?)";   
-	 
-	try {
+	 try {
 	 PreparedStatement preparedStmt = ConnectionWithDatabase.connectWithDatabase().prepareStatement(query);
 	 preparedStmt.setString (1, user.getName());
 	 preparedStmt.setString (2, user.getEmail());
@@ -60,12 +53,10 @@ public class Register {
  
 public static  void setAdminInDatabase(Admin admin) {
 	
-	
    Calendar calendar = Calendar.getInstance();
    java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
    String query = " insert into admins (name,email,password,datecreated)" + " values (?, ?, ?,?)";
    try {
-// create the mysql insert preparedstatement
  PreparedStatement preparedStmt = ConnectionWithDatabase.connectWithDatabase().prepareStatement(query);
  preparedStmt.setString (1, admin.getName());
  preparedStmt.setString (2, admin.getEmail());
@@ -83,10 +74,3 @@ public static  void setAdminInDatabase(Admin admin) {
   }
 
 }
-
-
-
-
-
-
-
