@@ -35,8 +35,7 @@ public static void setServiceInDatabase(Service service) {
 	 preparedStmt.setString(5,  service.getEnd());
 	 preparedStmt.setBoolean(7, service.getIsActivated());
 	 preparedStmt.setInt (6, service.getUserId());
-
-	 preparedStmt.execute();
+     preparedStmt.execute();
 	 System.out.println("Record is inserted in the table successfully");
 		}catch(Exception e)
 	    {
@@ -44,7 +43,6 @@ public static void setServiceInDatabase(Service service) {
 	      System.err.println(e.getMessage());
 	   }
 	  }
-
 
 
 }
