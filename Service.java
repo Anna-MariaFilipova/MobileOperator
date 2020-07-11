@@ -1,5 +1,4 @@
 package mobileOperator;
-
 public class Service {     	
 private int id;	
 
@@ -18,7 +17,7 @@ Service(String typeService,double price, String end,int userId,boolean isActivat
 	this.isActivated=isActivated;
 }
 
-public void setIsActivated(boolean isActivated) {
+public  void setIsActivated(boolean isActivated) {
 	this.isActivated=isActivated;
 }
 
@@ -68,4 +67,5 @@ public String getEnd() {
 public boolean getIsActivated() {
 	return isActivated;
 }
+
 }
