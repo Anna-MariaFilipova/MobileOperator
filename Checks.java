@@ -36,7 +36,7 @@ public class Checks {
 		 Menu.menuForAdmin();
 	 }
 	 else 
-		 System.out.println("Not found!");
+		 System.out.println("Not found an admin!");
 	  st.close();
 	 }
 	catch (Exception e)
@@ -81,7 +81,7 @@ public class Checks {
 	  } 
 	 if(isFound==false) {
 	
-		 System.out.println("Not found!");
+		 System.out.println("Not found a user!");
 	 }
 	  st.close();
 	 }
