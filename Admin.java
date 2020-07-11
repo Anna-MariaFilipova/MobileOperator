@@ -1,8 +1,6 @@
 package mobileOperator;
 
-import java.io.Serializable;
-
-public class Admin implements Serializable{
+public class Admin {
 	
 		private static final long serialVersionUID = 3137346322501618611L;
 			private String name;
