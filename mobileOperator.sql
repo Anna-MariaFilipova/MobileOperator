@@ -19,12 +19,16 @@ date_created timestamp default now()
 );
 
 CREATE TABLE services(
-id          INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-typeService VARCHAR(255)       NOT NULL,
-price       DOUBLE             NOT NULL,
-start       DATETIME           NOT NULL,
-end         DATETIME           NOT NULL,
-user_id     INT                NOT NULL,
-isActivated boolean            NOT NULL,
+id              INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+typeService     VARCHAR(255)        NOT NULL,
+price           DOUBLE              NOT NULL,
+startService    DATETIME            NOT NULL,
+endService      DATETIME            NOT NULL,
+lastPaymentDate DATETIME NOT NULL,
+countMinutes    INT                 NOT NULL,
+countSMS        INT                 NOT NULL,
+countMegabytes  INT                 NOT NULL,
+user_id         INT                 NOT NULL,
+isActivated boolean                 NOT NULL,
 CONSTRAINT FOREIGN KEY(user_id) REFERENCES users(id)
 );
