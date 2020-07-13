@@ -1,12 +1,14 @@
 package mobileOperator;
 
+import java.util.Date;
+
 public class Service {
 
 	private int id;
 	private String typeService;
-	private String startService;
-	private String endService;
-	private String lastPaymentDate;
+	private Date startService;
+	private Date endService;
+	private Date lastPaymentDate;
 	private int countMinutes;
 	private int countSMS;
 	private int countMegabytes;
@@ -14,7 +16,7 @@ public class Service {
 	private int userId;
 	private boolean isActivated;
 
-	Service(String typeService, String endService, String lastPaymentDate, int countMinutes, int countSMS,
+	Service(String typeService, Date endService, Date lastPaymentDate, int countMinutes, int countSMS,
 			int countMegabytes, double price, int userId, boolean isActivated) {
 		this.typeService = typeService;
 		this.endService = endService;
@@ -40,15 +42,15 @@ public class Service {
 		;
 	}
 
-	public void setStartService(String startService) {
+	public void setStartService(Date startService) {
 		this.startService = startService;
 	}
 
-	public void setEndService(String endService) {
+	public void setEndService(Date endService) {
 		this.endService = endService;
 	}
 
-	public void setLastPaymentDate(String lastPaymentDate) {
+	public void setLastPaymentDate(Date lastPaymentDate) {
 		this.lastPaymentDate = lastPaymentDate;
 	}
 
@@ -88,7 +90,7 @@ public class Service {
 		return userId;
 	}
 
-	public String getLastPaymentDate() {
+	public Date getLastPaymentDate() {
 		return lastPaymentDate;
 	}
 
@@ -104,11 +106,11 @@ public class Service {
 		return countMegabytes;
 	}
 
-	public String getStartService() {
+	public Date getStartService() {
 		return startService;
 	}
 
-	public String getEndService() {
+	public Date getEndService() {
 		return endService;
 	}
 
