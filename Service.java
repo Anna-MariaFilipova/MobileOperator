@@ -29,6 +29,11 @@ public class Service {
 		this.isActivated = isActivated;
 	}
 
+	public Service(String typeService2, Date lastPaymentDate2, Date endService2, int smsCount, int minutesCount,
+			int megabytesCount, boolean isActive) {
+
+	}
+
 	public void setCountMinutes(int countMinutes) {
 		this.countMinutes = countMinutes;
 	}
@@ -119,3 +124,4 @@ public class Service {
 	}
 
 }
+
