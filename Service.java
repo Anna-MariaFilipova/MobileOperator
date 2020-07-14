@@ -1,6 +1,6 @@
 package mobileOperator;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Service {
 
@@ -8,19 +8,19 @@ public class Service {
 	private String typeService;
 	private Date startService;
 	private Date endService;
-	private Date lastPaymentDate;
 	private int countMinutes;
 	private int countSMS;
 	private int countMegabytes;
 	private double price;
 	private int userId;
 	private boolean isActivated;
+	private Date lastPaymentDate;
 
-	Service(String typeService, Date endService, Date lastPaymentDate, int countMinutes, int countSMS,
-			int countMegabytes, double price, int userId, boolean isActivated) {
+	Service(String typeService, java.sql.Date endService2, java.sql.Date lastPaymentDate2, int countMinutes,
+			int countSMS, int countMegabytes, double price, int userId, boolean isActivated) {
 		this.typeService = typeService;
-		this.endService = endService;
-		this.lastPaymentDate = lastPaymentDate;
+		this.endService = endService2;
+		this.lastPaymentDate = lastPaymentDate2;
 		this.countMinutes = countMinutes;
 		this.countSMS = countSMS;
 		this.countMegabytes = countMegabytes;
@@ -46,11 +46,11 @@ public class Service {
 		this.startService = startService;
 	}
 
-	public void setEndService(Date endService) {
+	public void setEndService(java.sql.Date endService) {
 		this.endService = endService;
 	}
 
-	public void setLastPaymentDate(Date lastPaymentDate) {
+	public void setLastPaymentDate(java.sql.Date lastPaymentDate) {
 		this.lastPaymentDate = lastPaymentDate;
 	}
 
