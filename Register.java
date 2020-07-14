@@ -5,18 +5,8 @@ import java.util.Calendar;
 
 public class Register {
 
-	public static User createUser(String name, String email, String password) {
+	public static void setUserInDatabase(String name, String email, String password) {
 		User user = new User(name, email, password);
-		return user;
-	}
-
-	public static Admin createAdmin(String name, String email, String password) {
-		Admin admin = new Admin(name, email, password);
-		return admin;
-	}
-
-	public static void setUserInDatabase(User user) {
-
 		Calendar calendar = Calendar.getInstance();
 		java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 		String query = " insert into users (name,email,date_created,password)" + " values (?, ?, ?,?)";
@@ -34,8 +24,8 @@ public class Register {
 		}
 	}
 
-	public static void setAdminInDatabase(Admin admin) {
-
+	public static void setAdminInDatabase(String name, String email, String password) {
+		Admin admin = new Admin(name, email, password);
 		Calendar calendar = Calendar.getInstance();
 		java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 		String query = " insert into admins (name,email,password,datecreated)" + " values (?, ?, ?,?)";
