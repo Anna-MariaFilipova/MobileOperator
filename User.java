@@ -35,7 +35,8 @@ public class User {
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(String password) throws PasswordException {
+
 		this.password = password;
 	}
 
