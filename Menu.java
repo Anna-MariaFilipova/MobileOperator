@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Menu {
 
-	public static void mainMenu()  {
+	public static void mainMenu() {
 		Scanner scanner = new Scanner(System.in);
-		AdminOperations operation=new AdminOperations();
-		Register registration=new Register();
-		Checks checkIsExist=new Checks();
+		AdminOperations operation = new AdminOperations();
+		Register registration = new Register();
+		Checks checkIsExist = new Checks();
 		operation.isActive();
 		System.out.println("* 1.Login as user    *");
 		System.out.println("* 2.Login as admin   *");
@@ -95,9 +95,9 @@ public class Menu {
 
 	public static void menuForAdmin() throws PasswordException {
 		Scanner scanner = new Scanner(System.in);
-		ServiceStorage storage=new ServiceStorage();
-		AdminOperations operation=new AdminOperations();
-		Register registration=new Register();
+		ServiceStorage storage = new ServiceStorage();
+		AdminOperations operation = new AdminOperations();
+		Register registration = new Register();
 		System.out.println("1.Add user");
 		System.out.println("2.Add service");
 		System.out.println("3.Show unpaid services");
@@ -135,7 +135,7 @@ public class Menu {
 			double price = inService.nextDouble();
 			int userId = inService.nextInt();
 			boolean isActivated = inService.nextBoolean();
-			
+
 			try {
 				storage.setServiceInDatabase(ServiceStorage.createService(typeService, endServiceStr,
 						lastPaymentDateStr, countMinutes, countSMS, countMegabytes, price, userId, isActivated));
