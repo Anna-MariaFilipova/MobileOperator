@@ -5,9 +5,9 @@ import java.sql.Date;
 public class Service {
 
 	private int id;
-	private String typeService;
-	private Date startService;
-	private Date endService;
+	private String serviceName;
+	private Date serviceStart;
+	private Date serviceEnd;
 	private int countMinutes;
 	private int countSMS;
 	private int countMegabytes;
@@ -16,11 +16,11 @@ public class Service {
 	private boolean isActivated;
 	private Date lastPaymentDate;
 
-	Service(String typeService, java.sql.Date endService2, java.sql.Date lastPaymentDate2, int countMinutes,
-			int countSMS, int countMegabytes, double price, int userId, boolean isActivated) {
-		this.typeService = typeService;
-		this.endService = endService2;
-		this.lastPaymentDate = lastPaymentDate2;
+	Service(String serviceName, java.sql.Date serviceEnd, java.sql.Date lastPaymentDate, int countMinutes, int countSMS,
+			int countMegabytes, double price, int userId, boolean isActivated) {
+		this.serviceName = serviceName;
+		this.serviceEnd = serviceEnd;
+		this.lastPaymentDate = lastPaymentDate;
 		this.countMinutes = countMinutes;
 		this.countSMS = countSMS;
 		this.countMegabytes = countMegabytes;
@@ -47,12 +47,12 @@ public class Service {
 		;
 	}
 
-	public void setStartService(Date startService) {
-		this.startService = startService;
+	public void setServiceStart(Date serviceStart) {
+		this.serviceStart = serviceStart;
 	}
 
-	public void setEndService(java.sql.Date endService) {
-		this.endService = endService;
+	public void setServiceEnd(java.sql.Date serviceEnd) {
+		this.serviceEnd = serviceEnd;
 	}
 
 	public void setLastPaymentDate(java.sql.Date lastPaymentDate) {
@@ -71,8 +71,8 @@ public class Service {
 		this.userId = userId;
 	}
 
-	public void setTypeService(String typeService) {
-		this.typeService = typeService;
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
 
 	public void setPrice(double price) {
@@ -83,8 +83,8 @@ public class Service {
 		return id;
 	}
 
-	public String getTypeService() {
-		return typeService;
+	public String getServiceName() {
+		return serviceName;
 	}
 
 	public double getPrice() {
@@ -111,12 +111,12 @@ public class Service {
 		return countMegabytes;
 	}
 
-	public Date getStartService() {
-		return startService;
+	public Date getServiceStart() {
+		return serviceStart;
 	}
 
-	public Date getEndService() {
-		return endService;
+	public Date getServiceEnd() {
+		return serviceEnd;
 	}
 
 	public boolean getIsActivated() {
@@ -124,4 +124,3 @@ public class Service {
 	}
 
 }
-
