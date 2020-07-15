@@ -1,43 +1,76 @@
 package mobileOperator;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Checks {
-	public static void checkForAdmin(String searchedEmail, String searchedPassword) {
-
-		try {
-			String query = "SELECT * FROM admins";
-			Statement st = ConnectionWithDatabase.connectWithDatabase().createStatement();
-			ResultSet rs = st.executeQuery(query);
-			boolean isFound = false;
-			while (rs.next()) {
-				String email = rs.getString("email");
-				String password = rs.getString("password");
-				if (email.equals(searchedEmail) && password.equals(searchedPassword)) {
-					isFound = true;
-				}
-
-			}
-			if (isFound == true) {
-				Menu.menuForAdmin();
-			} else
-				System.out.println("Not found an admin!");
-			Menu.mainMenu();
-			st.close();
-		} catch (Exception e) {
-			System.err.println("Got an exception! ");
-			System.err.println(e.getMessage());
+	public void checkForAdmin(String searchedEmail, String searchedPassword) throws PasswordException, EmailException {
+		String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+		if (searchedEmail.matches(regex) == false) {
+			throw new EmailException();
+		}
+		if (searchedPassword.length() < 8) {
+			throw new PasswordException();
 		}
 
+		String query = "SELECT * FROM admins";
+		Statement st = null;
+		try {
+			st = ConnectionWithDatabase.connectWithDatabase().createStatement();
+		} catch (SQLException e) {
+			System.out.println("Cannot connect to the database");
+		}
+		ResultSet rs = null;
+		try {
+			rs = st.executeQuery(query);
+		} catch (SQLException e) {
+			System.out.println("The query cannot be fulfilled");
+		}
+		boolean isFound = false;
+		try {
+			while (rs.next()) {
+				String email = rs.getString("email");
+				String password = rs.getString("password");
+				if (email.equals(searchedEmail) && password.equals(searchedPassword)) {
+					isFound = true;
+				}
+
+			}
+		} catch (SQLException e) {
+			System.out.println("Cannot get the data from database");
+		}
+		if (isFound == true) {
+			Menu.menuForAdmin();
+		} else
+			System.out.println("Not found an admin!");
+		Menu.mainMenu();
+		try {
+			st.close();
+		} catch (SQLException e) {
+			System.out.println("Cannot stop the connection");
+		}
 	}
 
-	public static String checkForUser(String searchedEmail, String searchedPassword) {
+	public String checkForUser(String searchedEmail, String searchedPassword) throws PasswordException, EmailException {
+		String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+		if (searchedEmail.matches(regex) == false) {
+			throw new EmailException();
+		}
+		if (searchedPassword.length() < 8)
+			throw new PasswordException();
+
+		String query = "SELECT * FROM users";
+		Statement st = null;
 		try {
-			String query = "SELECT * FROM users";
-			Statement st = ConnectionWithDatabase.connectWithDatabase().createStatement();
+			st = ConnectionWithDatabase.connectWithDatabase().createStatement();
+		} catch (SQLException e) {
+			System.out.println("Cannot connect to the database");
+		}
+
+		boolean isFound = false;
+		try {
 			ResultSet rs = st.executeQuery(query);
-			boolean isFound = false;
 			while (rs.next()) {
 				String email = rs.getString("email");
 				String password = rs.getString("password");
@@ -45,19 +78,23 @@ public class Checks {
 					isFound = true;
 				}
 			}
-			if (isFound == true) {
-				System.out.println("Found");
-				AdminOperations.searchServiceByEmail(searchedEmail);
+		} catch (SQLException e) {
+			System.out.println("The query cannot be fulfilled");
+		}
 
-			} else {
-				System.out.println("Not found a user");
-				Menu.mainMenu();
-			}
+		if (isFound == true) {
+			AdminOperations operation = new AdminOperations();
+			operation.searchServiceByEmail(searchedEmail);
 
+		} else {
+			System.out.println("Not found a user");
+			Menu.mainMenu();
+		}
+
+		try {
 			st.close();
-		} catch (Exception e) {
-			System.err.println("Got an exception! ");
-			System.err.println(e.getMessage());
+		} catch (SQLException e) {
+			System.out.println("Cannot stop the connection");
 		}
 
 		return searchedEmail;
