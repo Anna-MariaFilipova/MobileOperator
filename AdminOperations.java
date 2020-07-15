@@ -56,7 +56,7 @@ public class AdminOperations {
 
 			}
 		} catch (SQLException e) {
-			System.out.println("Cannot get the data from the  database1");
+			System.out.println("Cannot get the data from the  database");
 		}
 
 		try {
@@ -106,7 +106,7 @@ public class AdminOperations {
 
 			}
 		} catch (SQLException e) {
-			System.out.println("Cannot get the data from the  database2");
+			System.out.println("Cannot get the data from the  database");
 		}
 
 		try {
@@ -125,7 +125,7 @@ public class AdminOperations {
 		try {
 			st = ConnectionWithDatabase.connectWithDatabase().createStatement();
 		} catch (SQLException e) {
-			System.out.println("Cannot connect to the database3");
+			System.out.println("Cannot connect to the database");
 		}
 		ResultSet rs = null;
 		try {
@@ -152,7 +152,7 @@ public class AdminOperations {
 				System.out.println("---------");
 			}
 		} catch (SQLException e) {
-			System.out.println("Cannot get the data from the  database4");
+			System.out.println("Cannot get the data from the  database");
 		}
 		try {
 			st.close();
