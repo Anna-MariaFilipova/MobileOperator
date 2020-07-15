@@ -1,0 +1,8 @@
+package mobileOperator;
+
+public class EmailException extends Exception{
+	@Override
+	public String getMessage() {
+		return "The email is not valid!";
+	}
+}
